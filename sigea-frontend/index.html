@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Sistema de Gestão de Aulas</title>
+    <meta name="description" content="Sistema de Gestão de Aulas - Organize turmas, acompanhe o desempenho dos alunos e facilite a comunicação entre coordenação, professores e estudantes.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>SIGEA</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active">Início</a></li>
+                <li><a href="#" class="nav-link">Professores</a></li>
+                <li><a href="#" class="nav-link">Alunos</a></li>
+                <li><a href="#" class="nav-link">Relatórios</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="login-btn">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Sistema de Gestão de Aulas</h1>
+            <p class="hero-description">
+                Organize turmas, acompanhe o desempenho dos alunos e facilite<br>
+                a comunicação entre coordenação, professores e estudantes.
+            </p>
+            <button class="cta-button">
+                <i class="fas fa-arrow-down"></i>
+                Conheça Mais
+            </button>
+        </div>
+
+        <!-- Feature Cards Section -->
+        <div class="features-section">
+            <div class="feature-card" data-feature="turmas">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="feature-title">Gestão de Turmas</h3>
+                <p class="feature-description">
+                    Crie, edite e gerencie<br>
+                    turmas com facilidade
+                </p>
+                <div class="feature-stats">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Turmas Ativas</span>
+                </div>
+            </div>
+
+            <div class="feature-card" data-feature="desempenho">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Desempenho<br>dos Alunos</h3>
+                <p class="feature-description">
+                    Acompanhe o progresso<br>
+                    e desempenho dos alunos
+                </p>
+                <div class="feature-stats">
+                    <span class="stat-number">2.5K+</span>
+                    <span class="stat-label">Alunos Cadastrados</span>
+                </div>
+            </div>
+
+            <div class="feature-card" data-feature="comunicacao">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="feature-title">Comunicação</h3>
+                <p class="feature-description">
+                    Facilite a comunicação<br>
+                    entre alunos, professores<br>
+                    e coordenadores
+                </p>
+                <div class="feature-stats">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Satisfação</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Info Section -->
+        <div class="info-section">
+            <div class="info-card">
+                <h3>🚀 Fácil de Usar</h3>
+                <p>Interface intuitiva e moderna para todos os usuários</p>
+            </div>
+            <div class="info-card">
+                <h3>📊 Relatórios Detalhados</h3>
+                <p>Acompanhe métricas e gere relatórios personalizados</p>
+            </div>
+            <div class="info-card">
+                <h3>🔒 Seguro e Confiável</h3>
+                <p>Seus dados protegidos com a mais alta segurança</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SIGEA</h4>
+                <p>Sistema de Gestão de Aulas moderno e eficiente para instituições de ensino.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Professores</a></li>
+                    <li><a href="#">Alunos</a></li>
+                    <li><a href="#">Relatórios</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>📧 contato@sigea.com.br</p>
+                <p>📞 (11) 9999-9999</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SIGEA. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Inicializa o banco de dados com dados de exemplo se ainda não estiver inicializado
+        async function initializeFrontendData() {
+            const initialized = localStorage.getItem("sigea_initialized");
+            if (!initialized) {
+                const sampleData = {
+                    professores: [
+                        {
+                            nome: "Maria Silva",
+                            email: "maria.silva@escola.com",
+                            telefone: "(11) 99999-1111",
+                            disciplina: "Matemática",
+                            dataContratacao: "2020-03-15"
+                        },
+                        {
+                            nome: "João Santos",
+                            email: "joao.santos@escola.com",
+                            telefone: "(11) 99999-2222",
+                            disciplina: "Português",
+                            dataContratacao: "2019-08-20"
+                        },
+                        {
+                            nome: "Ana Costa",
+                            email: "ana.costa@escola.com",
+                            telefone: "(11) 99999-3333",
+                            disciplina: "História",
+                            dataContratacao: "2021-01-10"
+                        }
+                    ],
+                    turmas: [
+                        {
+                            nome: "9º Ano A",
+                            ano: 2024,
+                            semestre: 1,
+                            professorId: 1,
+                            capacidade: 30,
+                            alunosMatriculados: 0
+                        },
+                        {
+                            nome: "8º Ano B",
+                            ano: 2024,
+                            semestre: 1,
+                            professorId: 2,
+                            capacidade: 25,
+                            alunosMatriculados: 0
+                        },
+                        {
+                            nome: "7º Ano C",
+                            ano: 2024,
+                            semestre: 1,
+                            professorId: 3,
+                            capacidade: 28,
+                            alunosMatriculados: 0
+                        }
+                    ],
+                    alunos: [
+                        {
+                            nome: "Pedro Oliveira",
+                            email: "pedro.oliveira@email.com",
+                            telefone: "(11) 98888-1111",
+                            dataNascimento: "2008-05-15",
+                            turmaId: 1,
+                            responsavel: "Carlos Oliveira",
+                            telefoneResponsavel: "(11) 97777-1111"
+                        },
+                        {
+                            nome: "Lucia Ferreira",
+                            email: "lucia.ferreira@email.com",
+                            telefone: "(11) 98888-2222",
+                            dataNascimento: "2009-03-22",
+                            turmaId: 1,
+                            responsavel: "Sandra Ferreira",
+                            telefoneResponsavel: "(11) 97777-2222"
+                        },
+                        {
+                            nome: "Rafael Lima",
+                            email: "rafael.lima@email.com",
+                            telefone: "(11) 98888-3333",
+                            dataNascimento: "2009-11-08",
+                            turmaId: 2,
+                            responsavel: "Roberto Lima",
+                            telefoneResponsavel: "(11) 97777-3333"
+                        },
+                        {
+                            nome: "Camila Souza",
+                            email: "camila.souza@email.com",
+                            telefone: "(11) 98888-4444",
+                            dataNascimento: "2010-07-12",
+                            turmaId: 3,
+                            responsavel: "Mariana Souza",
+                            telefoneResponsavel: "(11) 97777-4444"
+                        }
+                    ],
+                    aulas: [
+                        {
+                            turmaId: 1,
+                            professorId: 1,
+                            disciplina: "Matemática",
+                            data: "2024-09-25",
+                            horarioInicio: "08:00",
+                            horarioFim: "09:30",
+                            sala: "Sala 101",
+                            conteudo: "Equações do 2º grau"
+                        },
+                        {
+                            turmaId: 2,
+                            professorId: 2,
+                            disciplina: "Português",
+                            data: "2024-09-25",
+                            horarioInicio: "10:00",
+                            horarioFim: "11:30",
+                            sala: "Sala 102",
+                            conteudo: "Análise sintática"
+                        },
+                        {
+                            turmaId: 3,
+                            professorId: 3,
+                            disciplina: "História",
+                            data: "2024-09-25",
+                            horarioInicio: "14:00",
+                            horarioFim: "15:30",
+                            sala: "Sala 103",
+                            conteudo: "Brasil Colonial"
+                        }
+                    ]
+                };
+                await window.api.importarDados(sampleData);
+                localStorage.setItem("sigea_initialized", "true");
+                console.log("Dados de exemplo importados para o backend.");
+            }
+        }
+        initializeFrontendData();
+    </script>
+</body>
+</html>
+
